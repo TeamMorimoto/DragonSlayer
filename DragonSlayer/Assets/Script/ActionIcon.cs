@@ -47,7 +47,7 @@ public class ActionIcon : MonoBehaviour
         }
     }
 
-    public void Activate()
+    public void Activate(ActionParamater ap)
     {
         if(!active)
         {
@@ -59,6 +59,11 @@ public class ActionIcon : MonoBehaviour
             Color c = image.color;
             c.a = 1;
             image.color = c;
+
+            image.sprite = ap.Sprite;
+            time_preliminary_before = ap.Time_preliminary_before;
+            time_valid = ap.Time_valid;
+            time_preliminary_end = ap.Time_preliminary_end;
         }
     }
 
