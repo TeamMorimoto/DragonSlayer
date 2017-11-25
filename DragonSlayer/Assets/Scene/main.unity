@@ -517,7 +517,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 714667695}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 417002737}
+        m_MethodName: Activate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 0589b2f1ba7f7594c953ac8f34dbb8af,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: ActionParamater, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &714667695
@@ -628,7 +640,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 865893450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 417002737}
+        m_MethodName: Activate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 1376bc477bf5b034db40817ed900a18b,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: ActionParamater, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &865893450
@@ -1557,12 +1581,12 @@ Prefab:
     - target: {fileID: 224506325647960890, guid: 5a90510e0c4be2246bf5860132ac300b,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 523.3334
+      value: 2226.4446
       objectReference: {fileID: 0}
     - target: {fileID: 224506325647960890, guid: 5a90510e0c4be2246bf5860132ac300b,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 269.99997
+      value: 1228
       objectReference: {fileID: 0}
     - target: {fileID: 224506325647960890, guid: 5a90510e0c4be2246bf5860132ac300b,
         type: 2}
@@ -1602,7 +1626,7 @@ Prefab:
     - target: {fileID: 224506325647960890, guid: 5a90510e0c4be2246bf5860132ac300b,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -30.00003
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 224506325647960890, guid: 5a90510e0c4be2246bf5860132ac300b,
         type: 2}
@@ -1749,10 +1773,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 417002737}
         m_MethodName: Activate
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 5c417a22ba622134084cd38644737ac9,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: ActionParamater, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
