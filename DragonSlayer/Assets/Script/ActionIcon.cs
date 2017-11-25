@@ -47,33 +47,42 @@ public class ActionIcon : MonoBehaviour
         }
     }
 
+    //アクティブにする
     public void Activate(ActionParamater ap)
     {
         if(!active)
         {
+            //状態初期化
+
             image.rectTransform.localScale = new Vector3(1,1,1)*sizeRate_normal;
             time = 0f;
             active = true;
             mode = Mode.PRELIMINARY_BEFORE;
 
+            //完全不透過
             Color c = image.color;
             c.a = 1;
             image.color = c;
 
+            //アイコン画像を設定
             image.sprite = ap.Sprite;
+            //稼働時間を設定
             time_preliminary_before = ap.Time_preliminary_before;
             time_valid = ap.Time_valid;
             time_preliminary_end = ap.Time_preliminary_end;
         }
     }
 
+    //非アクティブにする
     public void Deactivate(bool force = false)
     {
         if (active || force)
         {
+            //完全透過
             Color c = image.color;
             c.a = 0;
             image.color = c;
+
             time = 0;
             active = false;
         }
@@ -82,9 +91,12 @@ public class ActionIcon : MonoBehaviour
     private void Update()
     {
         if(active)
-        {
-            float targetTime = 0 ;
-            switch(mode)
+        { 
+            time += Time.deltaTime;//稼働時間を更新
+
+            //比較相手の数値を現在のモードより決定
+            float targetTime = 0;
+            switch (mode)
             {
                 case Mode.PRELIMINARY_BEFORE:
                     targetTime = time_preliminary_before;
@@ -100,8 +112,8 @@ public class ActionIcon : MonoBehaviour
                     break;
             }
 
-            time += Time.deltaTime;
-
+            //加工時間が比較対象を超えていたら
+            //モード切替
             if(time>targetTime)
             {
                 time -= targetTime;
@@ -117,7 +129,7 @@ public class ActionIcon : MonoBehaviour
                         image.rectTransform.localScale = new Vector3(1, 1, 1) * sizeRate_normal;
                         break;
                     case Mode.PRELIMINARY_END:
-                        Deactivate();
+                        Deactivate();//終了　非アクティブへ
                         break;
                     default:
                         Debug.Log("バグ");
