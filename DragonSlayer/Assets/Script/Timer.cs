@@ -16,10 +16,12 @@ public class Timer : MonoBehaviour
     public delegate void EventTimerFinish(float exccess);
 
     //残り時間
+    [SerializeField]
     float timeRemain;
     public float TimeRemain { get { return timeRemain; } }
 
     //過剰時間
+    [SerializeField]
     float timeExccess;
     public float TimeExccess{get{ return timeExccess; }}
 
