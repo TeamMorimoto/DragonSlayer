@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
 {
     //行動を反映させるアイコン
     [SerializeField]
-    ActionIcon icon;
+    ActionSequencer actionSequencer;
 
     //各種行動に関するパラメータ
     [SerializeField]
@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
     {
         //必要なデータが全てそろっているかをチェック
         bool flag = false;
-        if (icon == null) flag = true;
+        if (actionSequencer == null) flag = true;
         if (AttackPram == null) flag = true;
         if (GuardParam == null) flag = true;
         if (DodgeParam == null) flag = true;
@@ -62,7 +62,7 @@ public class Character : MonoBehaviour
                 return;
         }
 
-        icon.Activate(ap);
+        actionSequencer.Activate(ap);
 
         isDuaringAction = true;
     }
@@ -72,7 +72,7 @@ public class Character : MonoBehaviour
     {
         if(isDuaringAction)
         {
-            if(icon.Active == false)
+            if(actionSequencer.Active == false)
             {
                 isDuaringAction = false;
             }
