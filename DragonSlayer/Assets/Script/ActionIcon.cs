@@ -19,15 +19,16 @@ public class ActionIcon : MonoBehaviour
     float sizeRate_valid = 1.0f;
 
     [SerializeField]
-    float time_preliminary_before=0.3f;
+    float time_preliminary_before = 0.3f;
     [SerializeField]
-    float time_valid=0.5f;
+    float time_valid = 0.5f;
     [SerializeField]
-    float time_preliminary_end=0.1f;
+    float time_preliminary_end = 0.1f;
 
 
-
+    public bool Active{ get { return active;} }
     bool active;
+
     float time;
 
     Image image;
