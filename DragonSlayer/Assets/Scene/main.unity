@@ -437,7 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeRate_normal: 0.5
   sizeRate_valid: 1
-  actionSequencer: {fileID: 0}
+  actionSequencer: {fileID: 1132301961}
 --- !u!1 &714667692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1281,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1132301960}
   - component: {fileID: 1132301959}
+  - component: {fileID: 1132301962}
+  - component: {fileID: 1132301961}
   m_Layer: 0
   m_Name: Mons
   m_TagString: Untagged
@@ -1345,6 +1347,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1132301961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132301958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae58edce04d4fee458a4468872472c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+--- !u!114 &1132301962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132301958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ea70bf1338bd84080e6969745d063a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionSequencer: {fileID: 1132301961}
+  AttackPram: {fileID: 11400000, guid: 5c417a22ba622134084cd38644737ac9, type: 2}
+  GuardParam: {fileID: 11400000, guid: 0589b2f1ba7f7594c953ac8f34dbb8af, type: 2}
+  DodgeParam: {fileID: 11400000, guid: 1376bc477bf5b034db40817ed900a18b, type: 2}
+  isDuaringAction: 0
+  actionInterval: 5
 --- !u!1 &1211628216
 GameObject:
   m_ObjectHideFlags: 0
