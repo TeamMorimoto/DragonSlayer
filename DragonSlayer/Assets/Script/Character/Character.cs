@@ -19,10 +19,11 @@ public class Character : MonoBehaviour
     
     //行動中であるか
     [SerializeField]
-    protected bool isDuaringAction;
+    private bool isDuaringAction;
+    protected bool IsDuaringAction { get { return isDuaringAction; } }
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         //必要なデータが全てそろっているかをチェック
         bool flag = false;
@@ -68,7 +69,7 @@ public class Character : MonoBehaviour
     }
 
 
-    private void Update()
+    protected virtual void Update()
     {
         if(isDuaringAction)
         {
