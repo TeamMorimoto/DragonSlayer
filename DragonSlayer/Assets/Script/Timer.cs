@@ -31,6 +31,7 @@ public class Timer : MonoBehaviour
     public void ResetEventTimerFinish() { eventTimerFinish = null; }
 
     //現在の状態
+    [SerializeField]
     Status status;
 
     public Status CurrentStatus { get { return status; } }
