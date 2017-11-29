@@ -89,6 +89,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224506325647960890}
+  - component: {fileID: 114863229639190544}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -245,6 +246,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: HP
+--- !u!114 &114863229639190544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795561325859126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bd40cee31bd864d81608bdc7855006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BarPontBack: {fileID: 224931758907273468}
+  BarPoint: {fileID: 224916661101637934}
 --- !u!222 &222162972401301996
 CanvasRenderer:
   m_ObjectHideFlags: 1
