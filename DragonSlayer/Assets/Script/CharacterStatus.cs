@@ -52,4 +52,10 @@ public class CharacterStatus : MonoBehaviour,
     void Character.Attachment.SetOwner(Character ch) { owner = ch; }
 
 
+    private void Awake()
+    {
+        stamina = StaminaMax;
+        hitPoint = HitPointMax;
+    }
+
 }
