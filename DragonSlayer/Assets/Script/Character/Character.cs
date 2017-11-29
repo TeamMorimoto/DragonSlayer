@@ -45,6 +45,9 @@ public class Character : MonoBehaviour
             return;
         }
 
+        //キャラクターの付属クラスに所有者を設定する
+        Attachment at = actionSequencer;
+        at.SetOwner(this);
         isDuaringAction = false;
     }
 
