@@ -787,6 +787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  owner: {fileID: 0}
 --- !u!114 &885457913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,8 +803,9 @@ MonoBehaviour:
   defence: 10
   hitPointMax: 100
   hitPoint: 0
-  staminaMax: 0
-  stamina: 50
+  staminaMax: 50
+  stamina: 0
+  owner: {fileID: 0}
 --- !u!1001 &942036727
 Prefab:
   m_ObjectHideFlags: 0
@@ -1379,6 +1381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+  owner: {fileID: 0}
 --- !u!114 &1132301962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,8 +1415,9 @@ MonoBehaviour:
   defence: 10
   hitPointMax: 100
   hitPoint: 0
-  staminaMax: 0
-  stamina: 50
+  staminaMax: 50
+  stamina: 0
+  owner: {fileID: 0}
 --- !u!1 &1211628216
 GameObject:
   m_ObjectHideFlags: 0
