@@ -43,7 +43,7 @@ public class CharacterStatus : MonoBehaviour,
     public float HitPointRate { get { return (float)HitPoint / (float)HitPointMax; } }
 
     //現在のスタミナの割合
-    public float StatminaRate { get { return (float)Stamina / (float)StaminaMax; } }
+    public float StaminaRate { get { return (float)Stamina / (float)StaminaMax; } }
 
     //所有しているキャラクター
     [SerializeField]
