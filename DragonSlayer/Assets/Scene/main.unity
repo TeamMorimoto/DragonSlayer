@@ -463,7 +463,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 714667692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 300, y: -199.99998, z: 0}
+  m_LocalPosition: {x: 300, y: -199.71535, z: 0}
   m_LocalScale: {x: 1.000087, y: 1.000087, z: 1.000087}
   m_Children:
   - {fileID: 1825173836}
@@ -585,7 +585,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 865893447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -199.99998, z: 0}
+  m_LocalPosition: {x: 0, y: -199.71535, z: 0}
   m_LocalScale: {x: 1.000087, y: 1.000087, z: 1.000087}
   m_Children:
   - {fileID: 1697256079}
@@ -692,6 +692,7 @@ GameObject:
   - component: {fileID: 885457910}
   - component: {fileID: 885457909}
   - component: {fileID: 885457911}
+  - component: {fileID: 885457913}
   - component: {fileID: 885457912}
   m_Layer: 0
   m_Name: Player
@@ -768,6 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc91372619257d94ea3583045e5c3911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status: {fileID: 885457913}
   actionSequencer: {fileID: 885457912}
   AttackPram: {fileID: 11400000, guid: 5c417a22ba622134084cd38644737ac9, type: 2}
   GuardParam: {fileID: 11400000, guid: 1376bc477bf5b034db40817ed900a18b, type: 2}
@@ -785,6 +787,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
+--- !u!114 &885457913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 885457908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56924cf8dede3d6429ead15e39ef27cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 10
+  defence: 10
+  hitPointMax: 100
+  hitPoint: 0
+  staminaMax: 0
+  stamina: 50
 --- !u!1001 &942036727
 Prefab:
   m_ObjectHideFlags: 0
@@ -1030,7 +1049,7 @@ RectTransform:
   m_GameObject: {fileID: 1057925200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 0.016666668, y: 0.016666668, z: 0.016666668}
+  m_LocalScale: {x: 0.016682494, y: 0.016682494, z: 0.016682494}
   m_Children:
   - {fileID: 1094984302}
   - {fileID: 942036728}
@@ -1282,6 +1301,7 @@ GameObject:
   - component: {fileID: 1132301960}
   - component: {fileID: 1132301959}
   - component: {fileID: 1132301962}
+  - component: {fileID: 1132301963}
   - component: {fileID: 1132301961}
   m_Layer: 0
   m_Name: Mons
@@ -1370,12 +1390,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ea70bf1338bd84080e6969745d063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status: {fileID: 1132301963}
   actionSequencer: {fileID: 1132301961}
   AttackPram: {fileID: 11400000, guid: a10333466c7abd84498cba83edab8a02, type: 2}
   GuardParam: {fileID: 11400000, guid: f9a13c321191e9e428ec9b81ba3139fb, type: 2}
   DodgeParam: {fileID: 11400000, guid: b9709da847efa8140bc6ee813bc6806c, type: 2}
   isDuaringAction: 0
   actionInterval: 5
+--- !u!114 &1132301963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132301958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56924cf8dede3d6429ead15e39ef27cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 10
+  defence: 10
+  hitPointMax: 100
+  hitPoint: 0
+  staminaMax: 0
+  stamina: 50
 --- !u!1 &1211628216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,7 +1813,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2101094899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -300, y: -200, z: 0}
+  m_LocalPosition: {x: -300, y: -199.71536, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 284983511}
