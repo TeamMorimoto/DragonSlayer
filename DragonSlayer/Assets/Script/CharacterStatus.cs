@@ -26,17 +26,17 @@ public class CharacterStatus : MonoBehaviour,
 
     //ヒットポイント
     [SerializeField]
-    uint hitPoint;
+    uint hitPoint=0;
     public uint HitPoint { get { return hitPoint; } }
 
     //スタミナマックス
     [SerializeField]
-    uint staminaMax;
+    uint staminaMax = STAMINA_MAX_DEFAULT;
     public uint StaminaMax { get { return staminaMax; } }
 
     //スタミナ
     [SerializeField]
-    uint stamina = STAMINA_MAX_DEFAULT;
+    uint stamina =0;
     public uint Stamina { get { return stamina; } }
 
     //現在のヒットポイントの割合
