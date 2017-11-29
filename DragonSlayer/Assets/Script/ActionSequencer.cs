@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ActionSequencer : MonoBehaviour
+    ,Character.Attachment
 {
     public delegate void EventOnChangeMode(Mode newMode,ActionParamater ap);
 
@@ -26,6 +27,12 @@ public class ActionSequencer : MonoBehaviour
     //モードの変化に伴って実行するデリゲート
     EventOnChangeMode eventOnChangeMode;
     public void SetEventOnChangeMode(EventOnChangeMode ev) { eventOnChangeMode = ev; }
+
+    //所有しているキャラクター
+    [SerializeField]
+    Character owner;
+    public Character Owner { get { return owner; } }
+    void Character.Attachment.SetOwner(Character ch) { owner = ch; }
 
     
     ActionParamater currentActionParameter;
