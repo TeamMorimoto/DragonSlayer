@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public interface Attachment
+    {
+        void SetOwner(Character ch);
+    }
+
     //行動を反映させるアイコン
     [SerializeField]
     ActionSequencer actionSequencer;
