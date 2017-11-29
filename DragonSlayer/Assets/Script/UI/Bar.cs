@@ -11,7 +11,7 @@ public class Bar : MonoBehaviour
     RectTransform BarPoint;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         bool flag = false;
         if (BarPoint == null) flag = true;
