@@ -9,6 +9,11 @@ public class Character : MonoBehaviour
         void SetOwner(Character ch);
     }
 
+    [SerializeField]
+    CharacterStatus status ;
+    public CharacterStatus Status{ get { return status; } }
+
+
     //行動を反映させるアイコン
     [SerializeField]
     ActionSequencer actionSequencer;
@@ -32,6 +37,7 @@ public class Character : MonoBehaviour
     {
         //必要なデータが全てそろっているかをチェック
         bool flag = false;
+        if (status == null) flag = true;
         if (actionSequencer == null) flag = true;
         if (AttackPram == null) flag = true;
         if (GuardParam == null) flag = true;
@@ -48,6 +54,9 @@ public class Character : MonoBehaviour
         //キャラクターの付属クラスに所有者を設定する
         Attachment at = actionSequencer;
         at.SetOwner(this);
+        at = status;
+        at.SetOwner(this);
+
         isDuaringAction = false;
     }
 
