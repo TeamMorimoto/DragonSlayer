@@ -6,6 +6,8 @@ using UnityEngine;
 public class CharacterStatus : MonoBehaviour,
     Character.Attachment
 {
+    public delegate void OnEventParamChange();
+
     const uint HIT_POINT_MAX_DEFAULT = 100;
     const uint STAMINA_MAX_DEFAULT = 50;
 
@@ -50,6 +52,10 @@ public class CharacterStatus : MonoBehaviour,
     Character owner;
     public Character Owner { get { return owner; } }
     void Character.Attachment.SetOwner(Character ch) { owner = ch; }
+
+
+    public OnEventParamChange ChangeHitpoint;
+    public void SetEventChangeHitpoint(OnEventParamChange ev) { ChangeHitpoint = ev; }
 
 
     private void Awake()
