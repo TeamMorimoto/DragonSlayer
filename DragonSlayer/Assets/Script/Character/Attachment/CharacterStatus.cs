@@ -64,4 +64,20 @@ public class CharacterStatus : MonoBehaviour,
         hitPoint = HitPointMax;
     }
 
+
+    public void DamageProcess(uint othAttack)
+    {
+        
+        uint Damage = (othAttack < defence) ? 0 : othAttack - defence;
+
+        uint newHitPoint = (hitPoint < Damage) ? 0 : hitPoint - Damage;
+
+        hitPoint = newHitPoint;
+
+        if(ChangeHitpoint!=null)
+        {
+            ChangeHitpoint();
+        }
+    }
+
 }
