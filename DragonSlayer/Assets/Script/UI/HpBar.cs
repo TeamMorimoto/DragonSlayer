@@ -16,11 +16,12 @@ public class HpBar : Bar
             bool flag = false;
             if (character == null) flag = true;
             if (flag) this.enabled = false;
-        }
-    }
+        }       
+    }    
 
     private void Start()
     {
+        character.Status.SetEventChangeHitpoint(OnChangeHitpoint);
 
         if (!SetBarSize(character.Status.HitPointMax * 1.5f))
         {
@@ -32,6 +33,13 @@ public class HpBar : Bar
         }
     }
 
+    void OnChangeHitpoint()
+    {
+        if (!SetBarRate(character.Status.HitPointRate))
+        {
+            Debug.LogError("キャラクターのヒットポイント割合が不正です");
+        }
+    }
 
 
 }

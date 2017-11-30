@@ -5,7 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="MyGame/Create ActionParamater",fileName ="ActionParamater")]
 public class ActionParamater : ScriptableObject
 {
-
+    public enum TYPE
+    {
+        ATTACK,
+        GUARD,
+        DODGE
+    }
+    [SerializeField]
+    TYPE type;
+    public TYPE Type { get { return type; } }
 
     [SerializeField]
     float time_preliminary_before;

@@ -25,8 +25,8 @@ public class ActionSequencer : MonoBehaviour
     public Mode CurrentMode { get { return mode; } }
 
     //モードの変化に伴って実行するデリゲート
-    EventOnChangeMode eventOnChangeMode;
-    public void SetEventOnChangeMode(EventOnChangeMode ev) { eventOnChangeMode = ev; }
+    List<EventOnChangeMode> eventOnChangeMode=new List<EventOnChangeMode>();
+    public void AddEventOnChangeMode(EventOnChangeMode ev) { eventOnChangeMode.Add(ev); }
 
     //所有しているキャラクター
     [SerializeField]
@@ -36,6 +36,7 @@ public class ActionSequencer : MonoBehaviour
 
     
     ActionParamater currentActionParameter;
+    public ActionParamater CurrentActionParamater { get { return currentActionParameter; } }
 
     private void Awake()
     {
@@ -58,7 +59,10 @@ public class ActionSequencer : MonoBehaviour
 
             if (eventOnChangeMode != null)
             {
-                eventOnChangeMode(mode, currentActionParameter);
+                foreach (EventOnChangeMode ev in eventOnChangeMode)
+                {
+                   ev(mode, currentActionParameter);
+                }
             }
         }
     }
@@ -131,7 +135,10 @@ public class ActionSequencer : MonoBehaviour
         //モードが変化したことを通知する
         if(eventOnChangeMode!=null)
         {
-            eventOnChangeMode(mode, currentActionParameter);
+            foreach (EventOnChangeMode ev in eventOnChangeMode)
+            {
+                ev(mode, currentActionParameter);
+            }
         }
 
         //非アクティブにする条件が整っていたら

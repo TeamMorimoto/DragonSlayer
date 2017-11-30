@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Attacck
   m_EditorClassIdentifier: Assembly-CSharp::ActionParamater
+  type: 0
   time_preliminary_before: 0.5
   time_valid: 0.5
   time_preliminary_end: 0.1

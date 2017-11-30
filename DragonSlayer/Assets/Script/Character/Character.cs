@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     //行動を反映させるアイコン
     [SerializeField]
     ActionSequencer actionSequencer;
+    public ActionSequencer ActionSequencer { get { return actionSequencer; } }
 
     //各種行動に関するパラメータ
     [SerializeField]
@@ -95,6 +96,16 @@ public class Character : MonoBehaviour
                 isDuaringAction = false;
             }
         }
+    }
+
+    public void OnAttacked(Character other)
+    {
+        if (other == null) { return; }
+
+        uint Attack = other.Status.Attack;
+
+        status.DamageProcess(Attack);
+
     }
 
 }

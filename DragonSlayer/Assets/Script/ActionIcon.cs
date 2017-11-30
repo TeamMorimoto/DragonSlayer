@@ -26,7 +26,7 @@ public class ActionIcon : MonoBehaviour
         image = GetComponent<Image>();
         if(image && actionSequencer)
         {
-            actionSequencer.SetEventOnChangeMode(OnSequencerChangeMode);
+            actionSequencer.AddEventOnChangeMode(OnSequencerChangeMode);
             Deactivate(true);
         }
         else
