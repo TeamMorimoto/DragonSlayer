@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6bd6e2a45fdea4094dc866de836a78, type: 3}
   m_Name: Guard
   m_EditorClassIdentifier: 
+  type: 1
   time_preliminary_before: 0.3
   time_valid: 0.5
   time_preliminary_end: 0.4

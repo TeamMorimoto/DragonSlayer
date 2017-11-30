@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Dodge
   m_EditorClassIdentifier: Assembly-CSharp::ActionParamater
+  type: 2
   time_preliminary_before: 0.1
   time_valid: 0.2
   time_preliminary_end: 0.5
