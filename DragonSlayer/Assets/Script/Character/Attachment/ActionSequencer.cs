@@ -36,6 +36,7 @@ public class ActionSequencer : MonoBehaviour
 
     
     ActionParamater currentActionParameter;
+    public ActionParamater CurrentActionParamater { get { return currentActionParameter; } }
 
     private void Awake()
     {
