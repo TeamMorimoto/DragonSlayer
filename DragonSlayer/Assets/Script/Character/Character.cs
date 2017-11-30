@@ -98,4 +98,14 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void OnAttacked(Character other)
+    {
+        if (other == null) { return; }
+
+        uint Attack = other.Status.Attack;
+
+        status.DamageProcess(Attack);
+
+    }
+
 }
