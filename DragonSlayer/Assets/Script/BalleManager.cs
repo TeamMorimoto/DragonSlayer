@@ -48,8 +48,7 @@ public class BalleManager : MonoBehaviour
     }
 
     void OnActionSequencerChangeMode(int characterNum,ActionSequencer.Mode newMode, ActionParamater ap)
-    {
-      
+    {     
 
         Character me = characterList[characterNum];
 
@@ -58,48 +57,50 @@ public class BalleManager : MonoBehaviour
 
         if (newMode == ActionSequencer.Mode.MAIN)
         {
-       
-
-            if (ap.Type == ActionParamater.TYPE.ATTACK)
+            switch (ap.Type)
             {
-                bool AttackHitFlag = true;
+                case ActionParamater.TYPE.ATTACK:
+                    AttackProcess(me, other);
+                    break;
+            }
+        }
+    }
+    
+    void AttackProcess(Character me ,Character other)
+    {
+        bool AttackHitFlag = true;
 
-                ActionSequencer otherCharacterActSeq = other.ActionSequencer;
+        ActionSequencer otherCharacterActSeq = other.ActionSequencer;
 
-                if (otherCharacterActSeq != null)
+        if (otherCharacterActSeq != null)
+        {
+            if (otherCharacterActSeq.Active)
+            {
+                if (otherCharacterActSeq.CurrentMode == ActionSequencer.Mode.MAIN)
                 {
-                  
-                    if (otherCharacterActSeq.Active)
+                    ActionParamater otherActParam = otherCharacterActSeq.CurrentActionParamater;
+
+                    if (otherActParam != null)
                     {
-
-                        if (otherCharacterActSeq.CurrentMode == ActionSequencer.Mode.MAIN)
+                        switch (otherActParam.Type)
                         {
-                            ActionParamater otherActParam = otherCharacterActSeq.CurrentActionParamater;
-
-                            if (otherActParam != null)
-                            {
-                               switch(otherActParam.Type)
-                               {
-                                    case ActionParamater.TYPE.DODGE:
-                                        AttackHitFlag = false;
-                                        break;
-                                    case ActionParamater.TYPE.GUARD:
-                                        AttackHitFlag = false;
-                                        break;
-                                    default:                                        
-                                        break; 
-                               }
-                            }
+                            case ActionParamater.TYPE.DODGE:
+                                AttackHitFlag = false;
+                                break;
+                            case ActionParamater.TYPE.GUARD:
+                                AttackHitFlag = false;
+                                break;
+                            default:
+                                break;
                         }
                     }
                 }
-
-                if(AttackHitFlag)
-                {
-                    other.OnAttacked(me);
-                }
-
             }
+        }
+
+        if (AttackHitFlag)
+        {
+            other.OnAttacked(me);
         }
     }
 }

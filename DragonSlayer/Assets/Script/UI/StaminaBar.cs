@@ -22,10 +22,20 @@ public class StaminaBar :Bar {
     private void Start()
     {
 
+        character.Status.SetEventChangeStamina(OnChangeStamina);
+
         if (!SetBarSize(character.Status.StaminaMax * 1.5f))
         {
             Debug.LogError("キャラクターのスタミナの最大値が不正です");
         }
+        if (!SetBarRate(character.Status.StaminaRate))
+        {
+            Debug.LogError("キャラクターのスタミナの割合が不正です");
+        }
+    }
+
+    void OnChangeStamina()
+    {
         if (!SetBarRate(character.Status.StaminaRate))
         {
             Debug.LogError("キャラクターのスタミナの割合が不正です");
