@@ -111,9 +111,11 @@ public class Character : MonoBehaviour
     {
         if (other == null) { return; }
 
-        uint Attack = other.Status.Attack;
+        float Attack =(float) other.Status.Attack;
 
-        status.DamageProcess(Attack);
+        float skilpower = other.actionSequencer.CurrentActionParamater.SkilPower;
+
+        status.DamageProcess((uint)(skilpower* Attack));
 
     }
 
