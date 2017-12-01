@@ -33,13 +33,17 @@ public class CharacterStatus : MonoBehaviour,
 
     //スタミナマックス
     [SerializeField]
-    uint staminaMax = STAMINA_MAX_DEFAULT;
-    public uint StaminaMax { get { return staminaMax; } }
+    float staminaMax = STAMINA_MAX_DEFAULT;
+    public float StaminaMax { get { return staminaMax; } }
 
     //スタミナ
     [SerializeField]
-    uint stamina =0;
-    public uint Stamina { get { return stamina; } }
+    float stamina =0;
+    public float Stamina { get { return stamina; } }
+
+    [SerializeField]
+    float staminaRecoverPerSecond;
+    
 
     //現在のヒットポイントの割合
     public float HitPointRate { get { return (float)HitPoint / (float)HitPointMax; } }
@@ -58,10 +62,33 @@ public class CharacterStatus : MonoBehaviour,
     public void SetEventChangeHitpoint(OnEventParamChange ev) { ChangeHitpoint = ev; }
 
 
+    public OnEventParamChange ChangeStamina;
+    public void SetEventChangeStamina(OnEventParamChange ev) { ChangeStamina = ev; }
+
     private void Awake()
     {
         stamina = StaminaMax;
         hitPoint = HitPointMax;
+    }
+
+    private void Update()
+    {
+        //スタミナ回復
+        if(stamina<staminaMax)
+        {
+            stamina += staminaRecoverPerSecond * Time.deltaTime;
+
+            if (stamina>StaminaMax)
+            {
+                stamina = staminaMax;
+            }
+
+            if(ChangeStamina!=null)
+            {
+                ChangeStamina();
+            }
+
+        }
     }
 
 
@@ -78,6 +105,22 @@ public class CharacterStatus : MonoBehaviour,
         {
             ChangeHitpoint();
         }
+    }
+
+    public bool UseStamina(float point)
+    {
+        if(stamina>point)
+        {
+            stamina -= point;
+
+            if (ChangeStamina != null)
+            {
+                ChangeStamina();
+            }
+
+            return true;
+        }
+        return false;
     }
 
 }
