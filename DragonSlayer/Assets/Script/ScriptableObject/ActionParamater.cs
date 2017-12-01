@@ -33,6 +33,9 @@ public class ActionParamater : ScriptableObject
     [SerializeField]
     uint staminaConsumption;
     public uint StaminaConsumption { get { return staminaConsumption; } }
-    
+
+    [SerializeField]
+    float skilPower;
+    public float SkilPower { get { return skilPower; } }
 
 }
