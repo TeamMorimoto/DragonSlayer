@@ -81,7 +81,10 @@ public class Character : MonoBehaviour
                 return;
         }
 
+            if (status.UseStamina(10))
+            {
         actionSequencer.Activate(ap);
+            }
 
         isDuaringAction = true;
     }
