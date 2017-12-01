@@ -69,27 +69,30 @@ public class Character : MonoBehaviour
     {
         if (!isDuaringAction)
         {
-        ActionParamater ap = null;
-        switch(n)
-        {
-            case 0: ap = AttackPram;
-                break; 
-            case 1: ap = GuardParam;
-                break;
-            case 2: ap = DodgeParam;
-                break;
-
-            default:
-                return;
-        }
-
-            if (status.UseStamina(10))
+            ActionParamater ap = null;
+            switch (n)
             {
-        actionSequencer.Activate(ap);
+                case 0:
+                    ap = AttackPram;
+                    break;
+                case 1:
+                    ap = GuardParam;
+                    break;
+                case 2:
+                    ap = DodgeParam;
+                    break;
+
+                default:
+                    return;
             }
 
-        isDuaringAction = true;
-    }
+            if (status.UseStamina((float)ap.StaminaConsumption))
+            {
+                actionSequencer.Activate(ap);
+            }
+
+            isDuaringAction = true;
+        }
     }
 
 

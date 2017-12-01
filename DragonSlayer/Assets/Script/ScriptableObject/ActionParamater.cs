@@ -29,6 +29,10 @@ public class ActionParamater : ScriptableObject
     [SerializeField]
     Sprite sprite;
     public Sprite Sprite { get { return sprite; } }
+
+    [SerializeField]
+    uint staminaConsumption;
+    public uint StaminaConsumption { get { return staminaConsumption; } }
     
 
 }
