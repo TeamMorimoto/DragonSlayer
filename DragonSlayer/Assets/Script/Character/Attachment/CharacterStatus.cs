@@ -109,7 +109,7 @@ public class CharacterStatus : MonoBehaviour,
 
     public bool UseStamina(float point)
     {
-        if(stamina>point)
+        if(stamina>=point)
         {
             stamina -= point;
 
