@@ -67,6 +67,8 @@ public class Character : MonoBehaviour
     /// <param name="n">行動の番号(種類)</param>
     public void StartAction(int n)
     {
+        if (!isDuaringAction)
+        {
         ActionParamater ap = null;
         switch(n)
         {
@@ -87,6 +89,7 @@ public class Character : MonoBehaviour
             }
 
         isDuaringAction = true;
+    }
     }
 
 
