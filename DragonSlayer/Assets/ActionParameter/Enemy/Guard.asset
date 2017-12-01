@@ -17,3 +17,4 @@ MonoBehaviour:
   time_preliminary_end: 0.4
   sprite: {fileID: 21300000, guid: e361ae79e4c8ee44299771c0d37b9db5, type: 3}
   staminaConsumption: 50
+  skilPower: 1
