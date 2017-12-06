@@ -367,9 +367,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5125057481ee6a347a90deab425c36ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeRate_normal: 0.5
+  sizeRate_normal: 1
   sizeRate_valid: 1.5
   actionSequencer: {fileID: 885457912}
+  lastInputedMode: 0
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  valiedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &461143672 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1795561325859126, guid: 5a90510e0c4be2246bf5860132ac300b,
@@ -484,9 +487,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5125057481ee6a347a90deab425c36ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeRate_normal: 0.5
-  sizeRate_valid: 1
+  sizeRate_normal: 1
+  sizeRate_valid: 1.5
   actionSequencer: {fileID: 1132301961}
+  lastInputedMode: 0
+  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  valiedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &714667692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,7 +1687,7 @@ Prefab:
     - target: {fileID: 224506325647960890, guid: 5a90510e0c4be2246bf5860132ac300b,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 523.3337
+      value: 523.3333
       objectReference: {fileID: 0}
     - target: {fileID: 224506325647960890, guid: 5a90510e0c4be2246bf5860132ac300b,
         type: 2}
@@ -1721,7 +1727,7 @@ Prefab:
     - target: {fileID: 224506325647960890, guid: 5a90510e0c4be2246bf5860132ac300b,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -9.999634
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 224506325647960890, guid: 5a90510e0c4be2246bf5860132ac300b,
         type: 2}
