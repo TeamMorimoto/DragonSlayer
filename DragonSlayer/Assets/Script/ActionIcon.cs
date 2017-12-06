@@ -20,7 +20,15 @@ public class ActionIcon : MonoBehaviour
 
     [SerializeField]
     ActionSequencer actionSequencer;
-    
+
+    [SerializeField]
+    ActionSequencer.Mode lastInputedMode;
+
+    [SerializeField]
+    Color normalColor;
+    [SerializeField]
+    Color valiedColor;
+
     private void Awake()
     {
         image = GetComponent<Image>();
@@ -46,7 +54,7 @@ public class ActionIcon : MonoBehaviour
             active = true;
           
             //完全不透過
-            Color c = image.color;
+            Color c =normalColor;
             c.a = 1;
             image.color = c;
 
@@ -81,11 +89,13 @@ public class ActionIcon : MonoBehaviour
                 break;
 
             case ActionSequencer.Mode.MAIN:
+                image.color = valiedColor;
                 image.rectTransform.localScale = new Vector3(1, 1, 1) * sizeRate_valid;
                 break;
 
             case ActionSequencer.Mode.PRELIMINARY_END:
-                image.rectTransform.localScale = new Vector3(1, 1, 1) * sizeRate_normal;
+                image.color = normalColor;
+                image.rectTransform.localScale = new Vector3(1, 1, 1) * sizeRate_valid;
                 break;
 
             case ActionSequencer.Mode.FINISHED:
@@ -96,5 +106,44 @@ public class ActionIcon : MonoBehaviour
                 Debug.Log("バグ");
                 break;
         }
+        lastInputedMode = newMode;
+    }
+
+    private void Update()
+    {
+        switch (lastInputedMode)
+        {
+            case ActionSequencer.Mode.PRELIMINARY_BEFORE:
+                {
+                    float timerProgress = actionSequencer.CurrentTimerProgress;
+                    image.rectTransform.localScale = new Vector3(1, 1, 1) * SizeRateBetweenNormalAndValid(timerProgress);
+                }
+                break;
+            case ActionSequencer.Mode.MAIN:         
+                break;
+            case ActionSequencer.Mode.PRELIMINARY_END:
+                {
+                    float timerProgress = actionSequencer.CurrentTimerProgress;
+                    timerProgress = 1.0f - timerProgress;
+                    image.rectTransform.localScale = new Vector3(1, 1, 1) * SizeRateBetweenNormalAndValid(timerProgress);
+                }
+                break;
+
+            case ActionSequencer.Mode.FINISHED:                
+                break;
+            case ActionSequencer.Mode.STAND_BY:
+                break;
+
+            default:
+                Debug.Log("バグ");
+                break;
+        }
+    }
+
+    float SizeRateBetweenNormalAndValid(float progress)
+    {
+        float difference = sizeRate_valid - sizeRate_normal;
+        return difference * progress+sizeRate_normal;
+
     }
 }
