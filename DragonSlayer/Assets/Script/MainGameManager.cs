@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainGameManager : MonoBehaviour
 {        
     [SerializeField]
-    BalleManager balleManager;
+    BattleManager balleManager;
 
     [SerializeField]
     GameObject restartButton;

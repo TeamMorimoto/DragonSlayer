@@ -35,8 +35,8 @@ public class Character : MonoBehaviour
 
     //戦闘マネージャ
     [SerializeField]
-    BalleManager balleManager;
-    public void SetBalleManager(BalleManager bm) { balleManager = bm; }
+    BattleManager battleManager;
+    public void SetBattleManager(BattleManager bm) { battleManager = bm; }
 
     protected virtual void Awake()
     {
@@ -71,7 +71,7 @@ public class Character : MonoBehaviour
     /// <param name="n">行動の番号(種類)</param>
     public void StartAction(int n)
     {
-        if (balleManager!=null && (!balleManager.IsMatchDeside))
+        if (battleManager!=null && (!battleManager.IsMatchDeside))
         {
             if (!isDuaringAction)
             {

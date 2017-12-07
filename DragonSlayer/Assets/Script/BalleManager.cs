@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BalleManager : MonoBehaviour
+public class BattleManager : MonoBehaviour
 {
     [SerializeField]
     List<Character> characterList;
@@ -36,7 +36,7 @@ public class BalleManager : MonoBehaviour
 
         foreach (Character ch in characterList)
         {
-            ch.SetBalleManager(this);
+            ch.SetBattleManager(this);
         }
 
 
