@@ -33,6 +33,10 @@ public class Character : MonoBehaviour
     private bool isDuaringAction;
     protected bool IsDuaringAction { get { return isDuaringAction; } }
 
+    //戦闘マネージャ
+    [SerializeField]
+    BalleManager balleManager;
+    public void SetBalleManager(BalleManager bm) { balleManager = bm; }
 
     protected virtual void Awake()
     {
@@ -67,7 +71,7 @@ public class Character : MonoBehaviour
     /// <param name="n">行動の番号(種類)</param>
     public void StartAction(int n)
     {
-        if (!Status.IsDead())
+        if (balleManager!=null && (!balleManager.IsMatchDeside))
         {
             if (!isDuaringAction)
             {
