@@ -491,8 +491,8 @@ MonoBehaviour:
   sizeRate_valid: 1.5
   actionSequencer: {fileID: 1132301961}
   lastInputedMode: 0
-  normalColor: {r: 0, g: 0, b: 0, a: 0}
-  valiedColor: {r: 0, g: 0, b: 0, a: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  valiedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &714667692
 GameObject:
   m_ObjectHideFlags: 0
