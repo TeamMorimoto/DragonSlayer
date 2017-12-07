@@ -18,6 +18,8 @@ public class ActionSequencer : MonoBehaviour
 
     Timer timer;
 
+    public float CurrentTimerProgress { get {return  timer.Progress; } }
+
     public bool Active { get {return  mode != Mode.STAND_BY && mode != Mode.FINISHED; } }
 
     [SerializeField]
