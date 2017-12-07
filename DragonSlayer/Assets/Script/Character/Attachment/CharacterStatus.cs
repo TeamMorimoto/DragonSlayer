@@ -43,6 +43,8 @@ public class CharacterStatus : MonoBehaviour,
 
     [SerializeField]
     float staminaRecoverPerSecond;
+
+    public bool IsDead() { return (hitPoint == 0); }
     
 
     //現在のヒットポイントの割合
