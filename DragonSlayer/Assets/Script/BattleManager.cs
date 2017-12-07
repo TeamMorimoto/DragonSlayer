@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BalleManager : MonoBehaviour
+public class BattleManager : MonoBehaviour
 {
     [SerializeField]
     List<Character> characterList;
 
+    [SerializeField]
+    bool isMatchDeside;
+    public bool IsMatchDeside { get { return isMatchDeside; } }
+
     private void Awake()
     {
+
         bool flag = false;
         if (characterList.Count != 2) flag = true;
 
@@ -20,11 +25,23 @@ public class BalleManager : MonoBehaviour
             }
         }
 
+        
+
         if(flag)
         {
            this.enabled = false;
+            return;
         }
-    }
+
+
+        foreach (Character ch in characterList)
+        {
+            ch.SetBattleManager(this);
+        }
+
+
+        isMatchDeside = false;
+    }    
 
     private void Start()
     {
@@ -34,8 +51,18 @@ public class BalleManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if(!isMatchDeside)
+        {
+            foreach(Character ch in characterList)
+            {
+                if(ch.Status.IsDead())
+                {
+                    isMatchDeside = true;
+                }
+            }
+        }
     }
+
 
     void OnChangeEventCharacter0(ActionSequencer.Mode newMode, ActionParamater ap)
     {

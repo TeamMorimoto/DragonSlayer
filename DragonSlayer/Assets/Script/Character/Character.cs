@@ -33,6 +33,10 @@ public class Character : MonoBehaviour
     private bool isDuaringAction;
     protected bool IsDuaringAction { get { return isDuaringAction; } }
 
+    //戦闘マネージャ
+    [SerializeField]
+    BattleManager battleManager;
+    public void SetBattleManager(BattleManager bm) { battleManager = bm; }
 
     protected virtual void Awake()
     {
@@ -67,31 +71,34 @@ public class Character : MonoBehaviour
     /// <param name="n">行動の番号(種類)</param>
     public void StartAction(int n)
     {
-        if (!isDuaringAction)
+        if (battleManager!=null && (!battleManager.IsMatchDeside))
         {
-            ActionParamater ap = null;
-            switch (n)
+            if (!isDuaringAction)
             {
-                case 0:
-                    ap = AttackPram;
-                    break;
-                case 1:
-                    ap = GuardParam;
-                    break;
-                case 2:
-                    ap = DodgeParam;
-                    break;
+                ActionParamater ap = null;
+                switch (n)
+                {
+                    case 0:
+                        ap = AttackPram;
+                        break;
+                    case 1:
+                        ap = GuardParam;
+                        break;
+                    case 2:
+                        ap = DodgeParam;
+                        break;
 
-                default:
-                    return;
+                    default:
+                        return;
+                }
+
+                if (status.UseStamina((float)ap.StaminaConsumption))
+                {
+                    actionSequencer.Activate(ap);
+                }
+
+                isDuaringAction = true;
             }
-
-            if (status.UseStamina((float)ap.StaminaConsumption))
-            {
-                actionSequencer.Activate(ap);
-            }
-
-            isDuaringAction = true;
         }
     }
 
