@@ -936,7 +936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 100
   defence: 10
-  hitPointMax: 300
+  hitPointMax: 10
   hitPoint: 0
   staminaMax: 100
   stamina: 0
@@ -1692,7 +1692,7 @@ MonoBehaviour:
   hitPoint: 0
   staminaMax: 50
   stamina: 0
-  staminaRecoverPerSecond: 1
+  staminaRecoverPerSecond: 5
   owner: {fileID: 0}
 --- !u!1 &1211628216
 GameObject:
