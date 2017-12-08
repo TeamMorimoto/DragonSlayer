@@ -76,6 +76,7 @@ public class ActionSequencer : MonoBehaviour
         {
             timer.ResetTimer();
             mode=Mode.STAND_BY;
+            currentActionParameter = null;
         }
     }
 
