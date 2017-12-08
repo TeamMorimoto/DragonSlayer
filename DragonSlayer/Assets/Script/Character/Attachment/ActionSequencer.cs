@@ -164,6 +164,49 @@ public class ActionSequencer : MonoBehaviour
 
     }
 
+    public void EndActionContinulation()
+    {
+        if (currentActionParameter == null|| currentActionParameter.ActionContinulation==false) return;
+
+        bool timeSetFlag = false;
+        float time = 0;
+        bool changed = false;
+
+        switch(mode)
+        {
+            case Mode.PRELIMINARY_BEFORE:
+                mode = Mode.PRELIMINARY_END;
+                time = currentActionParameter.Time_preliminary_end;
+                timeSetFlag = true;
+                changed = true;
+                break;
+            case Mode.MAIN:
+                mode = Mode.PRELIMINARY_END;
+                time = currentActionParameter.Time_preliminary_end;
+                timeSetFlag = true ;
+                changed = true;
+                break;
+        }
+
+        //モードが変化したことを通知する
+        if (changed)
+        {
+            if (eventOnChangeMode != null)
+            {
+                foreach (EventOnChangeMode ev in eventOnChangeMode)
+                {
+                    ev(mode, currentActionParameter);
+                }
+            }
+        }
+
+        if (timeSetFlag)
+        {
+            timer.ResetTimer();
+            timer.StartTimer(time);
+        }
+    }
+
   
 
 }
