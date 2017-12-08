@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Name: Guard
   m_EditorClassIdentifier: Assembly-CSharp::ActionParamater
   type: 1
+  actionContinulation: 1
   time_preliminary_before: 0.2
-  time_valid: 2
+  time_valid: 0.5
   time_preliminary_end: 0.5
   sprite: {fileID: 21300000, guid: e361ae79e4c8ee44299771c0d37b9db5, type: 3}
-  staminaConsumption: 50
+  staminaConsumption: 1
   skilPower: 1
