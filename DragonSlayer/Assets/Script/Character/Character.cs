@@ -102,6 +102,11 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void EndAction()
+    {
+        ActionSequencer.EndActionContinulation();
+    }
+
 
     protected virtual void Update()
     {
