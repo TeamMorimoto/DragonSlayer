@@ -76,11 +76,17 @@ public class CharacterStatus : MonoBehaviour,
     private void Update()
     {
         bool heal = true;
+
         if(owner.ActionSequencer!=null && 
             owner.ActionSequencer.CurrentActionParamater!=null&&
             owner.ActionSequencer.CurrentActionParamater.ActionContinulation)
         {
-            heal = false;
+            switch(owner.ActionSequencer.CurrentActionParamater.Type)
+            {
+                case ActionParamater.TYPE.GUARD:
+                    heal = false;
+                    break;
+            }            
         }
 
         //スタミナ回復
