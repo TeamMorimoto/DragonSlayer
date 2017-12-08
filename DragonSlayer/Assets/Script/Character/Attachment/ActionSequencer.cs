@@ -105,10 +105,19 @@ public class ActionSequencer : MonoBehaviour
         //次のモードに応じてタイマーを再スタート
         float time = -1;
         timer.ResetTimer();
+
+        bool timerSetFlag = true;
+
         switch (mode)
         {            
-            case Mode.MAIN:               
-               time=currentActionParameter.Time_valid;
+            case Mode.MAIN:
+     
+                time = currentActionParameter.Time_valid;
+                if (currentActionParameter.ActionContinulation)
+                {
+                    timerSetFlag = false;
+                }
+                
                 break;
 
             case Mode.PRELIMINARY_END:               
@@ -121,15 +130,19 @@ public class ActionSequencer : MonoBehaviour
             default:
                 Debug.Log("バグ");
                 break;
-        }      
+        }
 
-        if (!deactiveFlag)
+        if (timerSetFlag)
         {
-            if (!(timer.StartTimer(time - exccess)))
+            if (!deactiveFlag)
             {
-                if (!timer.StartTimer(time))
+
+                if (!(timer.StartTimer(time - exccess)))
                 {
-                    Debug.Log("タイマーセット失敗");
+                    if (!timer.StartTimer(time))
+                    {
+                        Debug.Log("タイマーセット失敗");
+                    }
                 }
             }
         }
