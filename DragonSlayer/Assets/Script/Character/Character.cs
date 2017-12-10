@@ -109,6 +109,25 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void StartAction(ActionParamater ap)
+    {
+        if (ap != null)
+        {
+            if (battleManager != null && (!battleManager.IsMatchDeside))
+            {
+                if (!isDuaringAction)
+                {
+                    if (status.UseStamina((float)ap.StaminaConsumption))
+                    {
+                        actionSequencer.Activate(ap);
+                    }
+
+                    isDuaringAction = true;
+                }
+            }
+        }
+    }
+
     public void EndAction()
     {
         ActionSequencer.EndActionContinulation();
