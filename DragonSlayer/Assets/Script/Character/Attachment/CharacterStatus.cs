@@ -75,21 +75,38 @@ public class CharacterStatus : MonoBehaviour,
 
     private void Update()
     {
-        //スタミナ回復
-        if(stamina<staminaMax)
+        bool heal = true;
+
+        if(owner.ActionSequencer!=null && 
+            owner.ActionSequencer.CurrentActionParamater!=null&&
+            owner.ActionSequencer.CurrentActionParamater.ActionContinulation)
         {
-            stamina += staminaRecoverPerSecond * Time.deltaTime;
-
-            if (stamina>StaminaMax)
+            switch(owner.ActionSequencer.CurrentActionParamater.Type)
             {
-                stamina = staminaMax;
-            }
+                case ActionParamater.TYPE.GUARD:
+                    heal = false;
+                    break;
+            }            
+        }
 
-            if(ChangeStamina!=null)
+        //スタミナ回復
+        if (heal)
+        {
+            if (stamina < staminaMax)
             {
-                ChangeStamina();
-            }
+                stamina += staminaRecoverPerSecond * Time.deltaTime;
 
+                if (stamina > StaminaMax)
+                {
+                    stamina = staminaMax;
+                }
+
+                if (ChangeStamina != null)
+                {
+                    ChangeStamina();
+                }
+
+            }
         }
     }
 

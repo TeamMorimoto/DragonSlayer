@@ -76,6 +76,7 @@ public class ActionSequencer : MonoBehaviour
         {
             timer.ResetTimer();
             mode=Mode.STAND_BY;
+            currentActionParameter = null;
         }
     }
 
@@ -105,10 +106,19 @@ public class ActionSequencer : MonoBehaviour
         //次のモードに応じてタイマーを再スタート
         float time = -1;
         timer.ResetTimer();
+
+        bool timerSetFlag = true;
+
         switch (mode)
         {            
-            case Mode.MAIN:               
-               time=currentActionParameter.Time_valid;
+            case Mode.MAIN:
+     
+                time = currentActionParameter.Time_valid;
+                if (currentActionParameter.ActionContinulation)
+                {
+                    timerSetFlag = false;
+                }
+                
                 break;
 
             case Mode.PRELIMINARY_END:               
@@ -121,15 +131,19 @@ public class ActionSequencer : MonoBehaviour
             default:
                 Debug.Log("バグ");
                 break;
-        }      
+        }
 
-        if (!deactiveFlag)
+        if (timerSetFlag)
         {
-            if (!(timer.StartTimer(time - exccess)))
+            if (!deactiveFlag)
             {
-                if (!timer.StartTimer(time))
+
+                if (!(timer.StartTimer(time - exccess)))
                 {
-                    Debug.Log("タイマーセット失敗");
+                    if (!timer.StartTimer(time))
+                    {
+                        Debug.Log("タイマーセット失敗");
+                    }
                 }
             }
         }
@@ -149,6 +163,49 @@ public class ActionSequencer : MonoBehaviour
             Deactivate();//終了　非アクティブへ
         }
 
+    }
+
+    public void EndActionContinulation()
+    {
+        if (currentActionParameter == null|| currentActionParameter.ActionContinulation==false) return;
+
+        bool timeSetFlag = false;
+        float time = 0;
+        bool changed = false;
+
+        switch(mode)
+        {
+            case Mode.PRELIMINARY_BEFORE:
+                mode = Mode.PRELIMINARY_END;
+                time = currentActionParameter.Time_preliminary_end;
+                timeSetFlag = true;
+                changed = true;
+                break;
+            case Mode.MAIN:
+                mode = Mode.PRELIMINARY_END;
+                time = currentActionParameter.Time_preliminary_end;
+                timeSetFlag = true ;
+                changed = true;
+                break;
+        }
+
+        //モードが変化したことを通知する
+        if (changed)
+        {
+            if (eventOnChangeMode != null)
+            {
+                foreach (EventOnChangeMode ev in eventOnChangeMode)
+                {
+                    ev(mode, currentActionParameter);
+                }
+            }
+        }
+
+        if (timeSetFlag)
+        {
+            timer.ResetTimer();
+            timer.StartTimer(time);
+        }
     }
 
   

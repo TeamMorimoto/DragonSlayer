@@ -16,6 +16,10 @@ public class ActionParamater : ScriptableObject
     public TYPE Type { get { return type; } }
 
     [SerializeField]
+    bool actionContinulation;
+    public bool ActionContinulation { get { return actionContinulation; } }
+
+    [SerializeField]
     float time_preliminary_before;
     public float Time_preliminary_before { get { return time_preliminary_before; } }
     [SerializeField]

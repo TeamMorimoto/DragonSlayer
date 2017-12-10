@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 865893451}
   - component: {fileID: 865893450}
   - component: {fileID: 865893449}
+  - component: {fileID: 865893452}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -732,18 +733,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 865893450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 885457911}
-        m_MethodName: StartAction
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &865893450
@@ -779,6 +769,53 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 865893447}
+--- !u!114 &865893452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 865893447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 885457911}
+          m_MethodName: StartAction
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 885457911}
+          m_MethodName: EndAction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &885457908
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,7 +909,7 @@ MonoBehaviour:
   GuardParam: {fileID: 11400000, guid: 1376bc477bf5b034db40817ed900a18b, type: 2}
   DodgeParam: {fileID: 11400000, guid: 0589b2f1ba7f7594c953ac8f34dbb8af, type: 2}
   isDuaringAction: 0
-  balleManager: {fileID: 0}
+  battleManager: {fileID: 0}
 --- !u!114 &885457912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,7 +936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 100
   defence: 10
-  hitPointMax: 300
+  hitPointMax: 10
   hitPoint: 0
   staminaMax: 100
   stamina: 0
@@ -1636,7 +1673,7 @@ MonoBehaviour:
   GuardParam: {fileID: 11400000, guid: f9a13c321191e9e428ec9b81ba3139fb, type: 2}
   DodgeParam: {fileID: 11400000, guid: b9709da847efa8140bc6ee813bc6806c, type: 2}
   isDuaringAction: 0
-  balleManager: {fileID: 0}
+  battleManager: {fileID: 0}
   actionInterval: 5
 --- !u!114 &1132301963
 MonoBehaviour:
@@ -1655,7 +1692,7 @@ MonoBehaviour:
   hitPoint: 0
   staminaMax: 50
   stamina: 0
-  staminaRecoverPerSecond: 1
+  staminaRecoverPerSecond: 5
   owner: {fileID: 0}
 --- !u!1 &1211628216
 GameObject:

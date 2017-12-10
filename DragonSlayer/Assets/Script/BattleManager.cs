@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+    public delegate void Event();
+    List<Event> eventOnMatchDeside = new List<Event>();
+    public void AddEventOnMatchDeside(Event ev) { eventOnMatchDeside.Add(ev); }
+
+
     [SerializeField]
     List<Character> characterList;
 
@@ -58,6 +63,11 @@ public class BattleManager : MonoBehaviour
                 if(ch.Status.IsDead())
                 {
                     isMatchDeside = true;
+
+                    foreach(Event ev in eventOnMatchDeside)
+                    {
+                        ev();
+                    }
                 }
             }
         }

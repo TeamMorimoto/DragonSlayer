@@ -62,7 +62,14 @@ public class Character : MonoBehaviour
         at = status;
         at.SetOwner(this);
 
+   
+
         isDuaringAction = false;
+    }
+
+    private void Start()
+    {
+        battleManager.AddEventOnMatchDeside(EndAction);
     }
 
     /// <summary>
@@ -100,6 +107,11 @@ public class Character : MonoBehaviour
                 isDuaringAction = true;
             }
         }
+    }
+
+    public void EndAction()
+    {
+        ActionSequencer.EndActionContinulation();
     }
 
 
