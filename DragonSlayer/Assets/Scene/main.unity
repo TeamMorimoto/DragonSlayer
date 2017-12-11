@@ -1675,6 +1675,7 @@ MonoBehaviour:
   isDuaringAction: 0
   battleManager: {fileID: 0}
   actionInterval: 5
+  actionSet: {fileID: 11400000, guid: f236bc9fdd4e35640b6c7c877250086f, type: 2}
 --- !u!114 &1132301963
 MonoBehaviour:
   m_ObjectHideFlags: 0
