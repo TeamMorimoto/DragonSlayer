@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Name: Dodge
   m_EditorClassIdentifier: 
   type: 2
+  actionContinulation: 0
   time_preliminary_before: 0.1
   time_valid: 0.4
   time_preliminary_end: 0.1
   sprite: {fileID: 21300000, guid: 0059c33df63682e49b139c45054604ee, type: 3}
   staminaConsumption: 10
+  skilPower: 1

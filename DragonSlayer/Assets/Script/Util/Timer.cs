@@ -15,6 +15,11 @@ public class Timer : MonoBehaviour
 
     public delegate void EventTimerFinish(float exccess);
 
+
+    [SerializeField]
+    float setTime;
+    public float SetTime { get { return setTime; } }
+
     //残り時間
     [SerializeField]
     float timeRemain;
@@ -40,6 +45,16 @@ public class Timer : MonoBehaviour
     public bool isRunning    { get { return status == Status.Run; } }
     public bool isFinished   { get { return status == Status.Finished; } }
 
+    [SerializeField]
+    float progress;
+
+    public float Progress
+    {
+        get
+        {
+            return progress;
+        }
+    }
 
     private void Awake()
     {
@@ -53,13 +68,32 @@ public class Timer : MonoBehaviour
         {
             timeRemain -= Time.deltaTime;
 
-            if(timeRemain<=0)
+            if (timeRemain <= 0)
             {
                 //タイマーの終了
                 timeExccess = -timeRemain;
 
                 status = Status.Finished;
+            }
 
+            //タイマーの進行度の更新
+            if (setTime > 0)
+            {
+                float time = TimeRemain;
+                if (time < 0)
+                {
+                    time = 0.0f;
+                }
+                progress= (setTime - time) / setTime;
+            }
+            else
+            {
+              progress= -1;
+            }
+
+
+            if (status==Status.Finished)
+            { 
                 //タイマー使用部分で終了時呼び出し関数を登録していると実行する
                 if(eventTimerFinish!=null)
                 {
@@ -76,6 +110,7 @@ public class Timer : MonoBehaviour
         {
             if (isStandingBy || isFinished)
             {
+                setTime = time;
                 timeRemain = time;
                 timeExccess = 0.0f;
 
@@ -101,6 +136,8 @@ public class Timer : MonoBehaviour
         timeRemain = 0;
         timeExccess = 0;
         status = Status.StandBy;
+        setTime = 0;
+        progress = 0;
     }
 
 

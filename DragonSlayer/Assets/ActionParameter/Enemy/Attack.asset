@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   type: 0
+  actionContinulation: 0
   time_preliminary_before: 0.5
   time_valid: 0.4
   time_preliminary_end: 0.2
   sprite: {fileID: 21300000, guid: a0da06e4675117047bfb40632253b5af, type: 3}
   staminaConsumption: 50
+  skilPower: 1

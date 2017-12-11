@@ -17,6 +17,10 @@ public class Player : Character
         {
             StartAction(1);
         }
+        if(Input.GetKeyUp(KeyCode.S))
+        {
+            EndAction();
+        }
 
         if(Input.GetKeyDown(KeyCode.D))
         {
