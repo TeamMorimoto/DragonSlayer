@@ -12,6 +12,9 @@ public class Enemy :Character
     [SerializeField]
     float actionInterval = 5;
 
+    [SerializeField]
+    ActionSet actionSet;
+
     protected override void Awake()
     {
         base.Awake();
@@ -19,6 +22,7 @@ public class Enemy :Character
         timer = this.gameObject.AddComponent<Timer>();
         timer.StartTimer(actionInterval);
 
+        
     }
 
     protected override void Update()
@@ -35,8 +39,9 @@ public class Enemy :Character
             {
                 if (!(timer.isRunning))
                 {
-                    int rand = Random.Range(0, 3);
-                    StartAction(rand);
+                    int rand = Random.Range(0, 100);
+                    ActionParamater act = actionSet.GetActionSetElement(rand);
+                    StartAction(act);
                 }
             }
         }
