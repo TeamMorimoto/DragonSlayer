@@ -10,6 +10,13 @@ public class Character : MonoBehaviour
     }
 
     [SerializeField]
+    int AttackComboMax = 3;
+
+    [SerializeField]
+    int AttackComboNum = 0;
+
+
+    [SerializeField]
     CharacterStatus status ;
     public CharacterStatus Status{ get { return status; } }
 
@@ -50,13 +57,14 @@ public class Character : MonoBehaviour
         Attachment at = actionSequencer;
         at.SetOwner(this);
         at = status;
-        at.SetOwner(this);
-
-   
+        at.SetOwner(this);   
 
         isDuaringAction = false;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void Start()
     {
         battleManager.AddEventOnMatchDeside(EndAction);
@@ -67,29 +75,62 @@ public class Character : MonoBehaviour
     /// </summary>
     public void StartAction(ActionParamater ap)
     {
-        if (ap != null)
+        if (ap == null) return;
+
+        if (!(battleManager != null && (!battleManager.IsMatchDeside))) return;
+
+        if (!isDuaringAction)
         {
-            if (battleManager != null && (!battleManager.IsMatchDeside))
+            //通常の行動
+            if (status.UseStamina((float)ap.StaminaConsumption))
             {
-                if (!isDuaringAction)
+                if(ap.Type==ActionParamater.TYPE.ATTACK)
+                {
+                    AttackComboNum = 1;
+                }
+
+                actionSequencer.Activate(ap);
+            }
+
+            isDuaringAction = true;
+        }
+        else
+        {
+            //連続攻撃中
+            if (ap.Type != ActionParamater.TYPE.ATTACK) return;
+
+            ActionParamater current = actionSequencer.CurrentActionParamater;
+
+            if (current == null) return;
+            if (current.Type != ActionParamater.TYPE.ATTACK) return;
+
+            if (actionSequencer.CurrentMode == ActionSequencer.Mode.PRELIMINARY_END)
+            {
+                if (AttackComboNum < AttackComboMax)
                 {
                     if (status.UseStamina((float)ap.StaminaConsumption))
                     {
-                        actionSequencer.Activate(ap);
-                    }
+                        //行動開始が確定したので行動開始
+                        AttackComboNum++;
 
-                    isDuaringAction = true;
+                        actionSequencer.Activate(ap, true);
+                    }
                 }
             }
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void EndAction()
     {
         ActionSequencer.EndActionContinulation();
     }
 
-
+    /// <summary>
+    /// 
+    /// </summary>
     protected virtual void Update()
     {
         if(isDuaringAction)
@@ -101,6 +142,10 @@ public class Character : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="other"></param>
     public void OnAttacked(Character other)
     {
         if (other == null) { return; }
