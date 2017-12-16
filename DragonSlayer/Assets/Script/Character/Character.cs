@@ -13,19 +13,10 @@ public class Character : MonoBehaviour
     CharacterStatus status ;
     public CharacterStatus Status{ get { return status; } }
 
-
     //行動を反映させるアイコン
     [SerializeField]
     ActionSequencer actionSequencer;
     public ActionSequencer ActionSequencer { get { return actionSequencer; } }
-
-    //各種行動に関するパラメータ
-    [SerializeField]
-    protected ActionParamater AttackPram;
-    [SerializeField]
-    protected ActionParamater GuardParam;
-    [SerializeField]
-    protected ActionParamater DodgeParam;
     
     //行動中であるか
     [SerializeField]
@@ -37,21 +28,21 @@ public class Character : MonoBehaviour
     protected BattleManager battleManager;
     public void SetBattleManager(BattleManager bm) { battleManager = bm; }
 
+    protected bool initialized = true;
+
     protected virtual void Awake()
     {
         //必要なデータが全てそろっているかをチェック
         bool flag = false;
         if (status == null) flag = true;
-        if (actionSequencer == null) flag = true;
-        if (AttackPram == null) flag = true;
-        if (GuardParam == null) flag = true;
-        if (DodgeParam == null) flag = true;
+        if (actionSequencer == null) flag = true; 
 
         if(flag)
         {
             //そろってない
             Debug.LogError("Characterクラス Awake 必要なデータがセットされていません");
             this.enabled = false;
+            initialized = false;
             return;
         }
 
