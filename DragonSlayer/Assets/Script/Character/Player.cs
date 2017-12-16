@@ -17,6 +17,7 @@ public class Player : Character
         {
             StartAction(1);
         }
+
         if(Input.GetKeyUp(KeyCode.S))
         {
             EndAction();
@@ -26,6 +27,28 @@ public class Player : Character
         {
             StartAction(2);
         }
+    }
 
+    public void StartAction(int n)
+    {
+        ActionParamater ap = null;
+
+        switch (n)
+        {
+            case 0:
+                ap = AttackPram;
+                break;
+            case 1:
+                ap = GuardParam;
+                break;
+            case 2:
+                ap = DodgeParam;
+                break;
+
+            default:
+                return;
+        }
+
+        StartAction(ap);
     }
 }

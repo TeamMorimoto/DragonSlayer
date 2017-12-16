@@ -21,12 +21,11 @@ public class Character : MonoBehaviour
 
     //各種行動に関するパラメータ
     [SerializeField]
-    ActionParamater AttackPram;
+    protected ActionParamater AttackPram;
     [SerializeField]
-    ActionParamater GuardParam;
+    protected ActionParamater GuardParam;
     [SerializeField]
-    ActionParamater DodgeParam;
-
+    protected ActionParamater DodgeParam;
     
     //行動中であるか
     [SerializeField]
@@ -35,7 +34,7 @@ public class Character : MonoBehaviour
 
     //戦闘マネージャ
     [SerializeField]
-    BattleManager battleManager;
+    protected BattleManager battleManager;
     public void SetBattleManager(BattleManager bm) { battleManager = bm; }
 
     protected virtual void Awake()
@@ -75,40 +74,6 @@ public class Character : MonoBehaviour
     /// <summary>
     /// 行動を開始する
     /// </summary>
-    /// <param name="n">行動の番号(種類)</param>
-    public void StartAction(int n)
-    {
-        if (battleManager!=null && (!battleManager.IsMatchDeside))
-        {
-            if (!isDuaringAction)
-            {
-                ActionParamater ap = null;
-                switch (n)
-                {
-                    case 0:
-                        ap = AttackPram;
-                        break;
-                    case 1:
-                        ap = GuardParam;
-                        break;
-                    case 2:
-                        ap = DodgeParam;
-                        break;
-
-                    default:
-                        return;
-                }
-
-                if (status.UseStamina((float)ap.StaminaConsumption))
-                {
-                    actionSequencer.Activate(ap);
-                }
-
-                isDuaringAction = true;
-            }
-        }
-    }
-
     public void StartAction(ActionParamater ap)
     {
         if (ap != null)
