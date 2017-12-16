@@ -903,13 +903,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc91372619257d94ea3583045e5c3911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackComboMax: 3
+  AttackComboNum: 0
   status: {fileID: 885457913}
   actionSequencer: {fileID: 885457912}
+  isDuaringAction: 0
+  battleManager: {fileID: 0}
   AttackPram: {fileID: 11400000, guid: 5c417a22ba622134084cd38644737ac9, type: 2}
   GuardParam: {fileID: 11400000, guid: 1376bc477bf5b034db40817ed900a18b, type: 2}
   DodgeParam: {fileID: 11400000, guid: 0589b2f1ba7f7594c953ac8f34dbb8af, type: 2}
-  isDuaringAction: 0
-  battleManager: {fileID: 0}
 --- !u!114 &885457912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,9 +936,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56924cf8dede3d6429ead15e39ef27cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 100
+  attack: 1
   defence: 10
-  hitPointMax: 10
+  hitPointMax: 200
   hitPoint: 0
   staminaMax: 100
   stamina: 0
@@ -1667,11 +1669,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ea70bf1338bd84080e6969745d063a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackComboMax: 3
+  AttackComboNum: 0
   status: {fileID: 1132301963}
   actionSequencer: {fileID: 1132301961}
-  AttackPram: {fileID: 11400000, guid: a10333466c7abd84498cba83edab8a02, type: 2}
-  GuardParam: {fileID: 11400000, guid: f9a13c321191e9e428ec9b81ba3139fb, type: 2}
-  DodgeParam: {fileID: 11400000, guid: b9709da847efa8140bc6ee813bc6806c, type: 2}
   isDuaringAction: 0
   battleManager: {fileID: 0}
   actionInterval: 5
