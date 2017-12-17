@@ -48,12 +48,19 @@ public class ActionSequencer : MonoBehaviour
     }
 
     //アクティブにする
-    public void Activate(ActionParamater ap)
+    public void Activate(ActionParamater ap,bool combo=false)
     {
-        if (mode==Mode.STAND_BY)
+        if (mode == Mode.STAND_BY || combo == true)
         {
             //状態初期化            
             mode = Mode.PRELIMINARY_BEFORE;
+
+            //攻撃のコンボならタイマーをリセットする　
+            //でないとタイマーのセットでエラーになる
+            if (combo == true)
+            {
+                timer.ResetTimer();
+            }
 
             //稼働時間を設定
             currentActionParameter = ap;

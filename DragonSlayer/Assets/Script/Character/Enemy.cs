@@ -19,6 +19,8 @@ public class Enemy :Character
     {
         base.Awake();
 
+     
+
         timer = this.gameObject.AddComponent<Timer>();
         timer.StartTimer(actionInterval);
 
